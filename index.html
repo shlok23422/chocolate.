@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Chocolate Day 🍫</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #3e2723, #6d4c41, #4e342e);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px 30px;
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-bottom: 10px;
+      color: #ffccbc;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      margin-bottom: 25px;
+      color: #ffe0b2;
+    }
+
+    .chocolate {
+      font-size: 5rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .chocolate:hover {
+      transform: scale(1.2) rotate(-5deg);
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #f5f5f5;
+      display: none;
+      animation: popUp 0.8s ease forwards;
+    }
+
+    @keyframes popUp {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #d2691e, #8d4b20);
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    }
+
+    .hearts span {
+      position: absolute;
+      bottom: -20px;
+      font-size: 1.5rem;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.4); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Happy Chocolate Day 🍫</h1>
+    <p class="subtitle">Because life is sweeter with chocolate & smiles</p>
+
+    <div class="chocolate" onclick="showMessage()">🍫</div>
+
+    <div class="message" id="msg">
+      Just like chocolate makes everything better,
+      your presence makes every moment sweeter 🤎✨
+      <br /><br />
+      Wishing you a day full of joy, warmth, and sweetness!
+    </div>
+
+    <button onclick="createHearts()">Send Sweetness 💝</button>
+  </div>
+
+  <div class="hearts" id="hearts"></div>
+
+  <script>
+    function showMessage() {
+      document.getElementById('msg').style.display = 'block';
+    }
+
+    function createHearts() {
+      const heartsContainer = document.getElementById('hearts');
+      for (let i = 0; i < 12; i++) {
+        const heart = document.createElement('span');
+        heart.innerHTML = Math.random() > 0.5 ? '🤎' : '🍫';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = 4 + Math.random() * 3 + 's';
+        heartsContainer.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 7000);
+      }
+    }
+  </script>
+
+</body>
+</html>
